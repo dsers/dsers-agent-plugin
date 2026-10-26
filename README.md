@@ -1,12 +1,28 @@
 # DSers Agent Plugins
 
 [DSers](https://www.dsers.com/) plugins help dropshippers run their ecommerce
-operations from AI agents: find products, work with suppliers, manage stores,
+operations from AI agents: find suppliers and products, manage stores,
 prepare order fulfillment, and follow shipment tracking.
 
-Built for AliExpress dropshipping and Shopify merchants using DSers, these
-integrations bring account-aware actions into an agent conversation. Each
-operation follows the connected account's permissions and the host's approvals.
+Built for dropshippers using multiple sourcing platforms and sales channels,
+these plugins bring supplier discovery, product sourcing, and store operations
+into an agent conversation. Each operation follows the connected DSers
+account's permissions and the host's approvals.
+
+## Sourcing platforms and sales channels
+
+DSers connects both sides of a dropshipping business:
+
+| Role | Platforms listed by DSers |
+| --- | --- |
+| Sourcing platforms | AliExpress, Alibaba.com, 1688, DSers Verified Agent Network (DVAN) |
+| Sales channels | Shopify, WooCommerce, Wix, eBay, TikTok Shop, Amazon, Walmart, BigCommerce, Squarespace, Square, Ecwid, Magento, SHOPLINE, Jumpseller, Big Cartel, Cartpanda, Genstore, LPQV |
+
+The [DSers integrations directory](https://www.dsers.com/integration) describes
+the available connections. CSV is also available as a file-based DSers
+workflow for other storefronts. The platform list describes the DSers
+ecosystem; actions available through each plugin depend on the connected
+account, channel, and exposed tools.
 
 ## Start with Hermes
 
@@ -23,26 +39,24 @@ Continue with the [OAuth setup instructions](plugins/hermes/README.md#install-in
 
 ## Plugins
 
-| Platform | Package | Status |
+| Platform | Package | Compatibility |
 | --- | --- | --- |
-| Hermes Agent | [plugins/hermes](plugins/hermes/README.md) | Validated on Hermes v0.22.5; OAuth and tool discovery passed; read-only query confirmed by maintainer; catalog submission pending |
+| Hermes Agent | [plugins/hermes](plugins/hermes/README.md) | Hermes v0.22.5; CLI and Desktop agent integration |
 
-Only the Hermes package exists today. Future platform integrations belong in
-separate directories under `plugins/` and require their own validation.
+Hermes is the currently available integration.
 
 ## What you can do
 
 | Dropshipping task | DSers capabilities available through account-authorized tools |
 | --- | --- |
-| Product sourcing | Search supplier products and compare available shipping options |
+| Supplier discovery and product sourcing | Find suppliers and products, compare sourcing options, and inspect available shipping methods |
 | Listing preparation | Prepare import-list products and manage product content and pricing |
 | Supplier mapping | Inspect product-to-supplier mappings and manage supported mapping operations |
 | Order fulfillment | Review orders, diagnose blockers, and perform explicitly authorized supplier-order actions |
 | Shipment tracking | Inspect packages and tracking events and perform supported tracking updates |
 
 Availability depends on the DSers plan, account permissions, connected store,
-and exposed tools. The completed smoke test covers a read-only query, not
-every operation in the table. See [validation evidence](plugins/hermes/docs/validation.md).
+and exposed tools.
 
 ## Repository structure
 
@@ -55,38 +69,28 @@ dsers-agent-plugin/
         ├── plugin.json
         ├── mcp.json
         ├── examples/
-        ├── docs/
         ├── README.md
         └── LICENSE
 ```
 
-For Hermes installation and publication, see the
-[plugin README](plugins/hermes/README.md) or
-[中文说明](plugins/hermes/docs/hermes.zh-CN.md).
+For Hermes installation and usage, see the
+[plugin README](plugins/hermes/README.md).
 
-Catalog entries and direct installs must point at the relevant plugin
-subdirectory. The repository root is an index, not an installable plugin.
+Install each plugin from its own subdirectory. The repository root is an
+index, not an installable plugin.
 
 The packages connect to the existing DSers MCP service at
 `https://ai.dsers.com/mcp` using OAuth 2.1. This repository does not include
 the MCP server implementation or user credentials.
 
-MCP is the current service connection within the plugin. A plugin package can
-also include workflow instructions and other host-supported components as it
-evolves. This release does not bundle workflow skills; future capabilities will
-be documented when released.
+MCP provides the current service connection. Plugin packages can also contain
+workflow instructions and other components supported by their host.
 
 ## Find DSers
 
 - [DSers dropshipping platform](https://www.dsers.com/)
 - [DSers plugin for Hermes and setup guide](plugins/hermes/README.md)
 - [DSers service capabilities](https://www.dsers.com/en/mcp-server)
-- [中文接入与上架说明](plugins/hermes/docs/hermes.zh-CN.md)
-- [Search and listing plan](docs/discovery.zh-CN.md)
-
-Hermes Catalog submission is pending. Until it is accepted, install using the
-repository command above. Catalog search by name or dropshipping use case
-becomes available only after the entry is published.
 
 ## License
 

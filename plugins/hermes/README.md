@@ -1,28 +1,34 @@
 # DSers — Dropshipping Plugin for Hermes
 
 Run your [DSers](https://www.dsers.com/) dropshipping operations from Hermes
-Agent. Built for dropshippers using AliExpress and Shopify, this plugin brings
-product sourcing, supplier mapping, order fulfillment, and shipment tracking
-into your agent conversation.
+Agent. Built for dropshippers using multiple sourcing platforms and sales
+channels, this plugin helps you find suppliers and products, manage stores,
+fulfill orders, and track shipments in your agent conversation.
 
 Connect your DSers account, ask for the outcome you need, and let Hermes use
 the available DSers actions within your account permissions and approvals.
 The service connection uses DSers's authenticated remote tools.
 
-**Status:** tested with Hermes v0.22.5. Package validation and Plugin Doctor
-pass. Browser OAuth and authenticated discovery succeeded with 60 tools;
-the maintainer also confirmed a successful read-only business query using
-DeepSeek. This repository has not yet been listed in the Hermes Plugin Catalog.
-See [validation evidence](docs/validation.md).
+## Multiple sourcing platforms and sales channels
 
-[中文接入与上架说明](docs/hermes.zh-CN.md)
+DSers's [integration ecosystem](https://www.dsers.com/integration) includes:
+
+- Sourcing platforms: AliExpress, Alibaba.com, 1688, and the DSers Verified
+  Agent Network (DVAN).
+- Sales channels: Shopify, WooCommerce, Wix, eBay, TikTok Shop, Amazon, Walmart,
+  BigCommerce, Squarespace, Square, Ecwid, Magento, SHOPLINE, Jumpseller,
+  Big Cartel, Cartpanda, Genstore, and LPQV.
+
+These are DSers platform connections. The plugin's available actions depend
+on the tools and permissions exposed for your account and connected channels.
+DSers also offers a CSV workflow for storefronts without a direct integration.
 
 ## For dropshippers and ecommerce teams
 
 | Task | Example request | Relevant discovered DSers tools |
 | --- | --- | --- |
 | Store overview | “List my connected DSers stores.” | `list_stores` |
-| Product sourcing | “Find AliExpress products matching this keyword and compare shipping to the US.” | `search_supplier_products`, `list_supplier_product_shipping_methods_and_cost` |
+| Supplier discovery and product sourcing | “Find supplier products matching this keyword, compare the available suppliers and shipping to the US, and show which sourcing platforms are available to my account.” | `search_supplier_products`, `list_supplier_product_shipping_methods_and_cost`, `list_stores` |
 | Product preparation | “Show the products in my import list and inspect this product's pricing.” | `list_pre_publish_products`, `get_pre_publish_product` |
 | Supplier mapping | “Inspect the supplier mapping for this store product.” | `get_store_product_mapping` |
 | Order fulfillment | “Show orders awaiting fulfillment and diagnose this order's blockers.” | `list_orders`, `get_order`, `diagnose_order_issue` |
@@ -31,16 +37,27 @@ See [validation evidence](docs/validation.md).
 The authenticated server also exposes supported write operations such as
 listing publication, pricing changes, supplier-order placement, and tracking
 updates. Their availability depends on your plan, store, and permissions;
-Hermes approvals still apply. The table illustrates use cases, not a promise
-that every tool or account combination has been tested.
+Hermes approvals still apply.
 
 ## Requirements
 
 - A DSers account with access to the requested operations and relevant stores.
 - Hermes Agent; this package was validated on v0.22.5.
 - A configured model provider in Hermes to interpret requests and call tools.
-  The maintainer's read-only smoke test used DeepSeek.
 - Browser sign-in to authorize access to DSers.
+
+## CLI and Desktop
+
+Use the same plugin from the Hermes CLI or from a chat in Hermes Desktop.
+When both connect to the same backend and profile, they use that profile's
+plugin installation, DSers connection settings, and saved OAuth authorization.
+If Desktop connects to a remote backend, install and authorize the plugin on
+that backend in the profile you select.
+
+In Desktop, the plugin provides DSers tools to the agent's chat. It does not
+add a separate DSers pane. See the
+[Hermes Desktop guide](https://hermes-agent.nousresearch.com/docs/user-guide/desktop)
+for profile and backend selection.
 
 ## Package
 
@@ -58,8 +75,7 @@ host policy, and future workflow components belong to the plugin package.
 No workflow skills are bundled in this release.
 
 The plugin does not bundle DSers server code or maintain a fixed tool list.
-Hermes discovers the tools available to the authorized account at runtime;
-the names in the use-case table are examples from the successful discovery test.
+Hermes discovers the tools available to the authorized account at runtime.
 
 ## Install in Hermes
 
@@ -103,13 +119,7 @@ setup so the MCP tools are available in the session.
 Start a new conversation with `hermes chat` and try the read-only store overview
 in the table above. If Hermes has no model configured, run `hermes model` first.
 
-## Find and install DSers
-
-Direct repository installation is available now. The Hermes Plugin Catalog
-entry has not been submitted or accepted yet, so catalog search is not live.
-After acceptance and catalog publication, users can search for `dsers` or the
-business terms included in its catalog description, such as `dropshipping`,
-`AliExpress`, `Shopify`, `fulfillment`, and `tracking`.
+## Links
 
 [DSers product website](https://www.dsers.com/) ·
 [DSers service capability reference](https://www.dsers.com/en/mcp-server) ·
@@ -128,23 +138,3 @@ business terms included in its catalog description, such as `dropshipping`,
   shell hooks, background process, or separate telemetry collector.
 - MIT covers this repository's files. Use of the DSers service remains
   subject to DSers service terms and the user's account permissions.
-
-## Validate and publish
-
-With Hermes installed:
-
-```sh
-hermes plugins validate /absolute/path/to/dsers-agent-plugin/plugins/hermes --install-deps
-hermes plugins doctor /absolute/path/to/dsers-agent-plugin/plugins/hermes --ci
-```
-
-Static validation is separate from OAuth and authenticated tool testing.
-Complete login, discover the real tools, and verify one authorized read-only
-request before submitting. Do not use a write operation as a smoke test.
-
-Publication requires a public commit containing this package, a full
-40-character SHA, and a catalog PR to `NousResearch/hermes-agent`. Set
-`subdir: plugins/hermes` in the catalog entry. The
-maintainers review the pinned commit. See the
-[Hermes catalog submission guide](https://hermes-agent.nousresearch.com/docs/developer-guide/plugins/catalog-submission)
-and [local publication checklist](docs/hermes.zh-CN.md).
