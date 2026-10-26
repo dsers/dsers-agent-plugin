@@ -9,6 +9,11 @@ Connect your DSers account, ask for the outcome you need, and let Hermes use
 the available DSers actions within your account permissions and approvals.
 The service connection uses DSers's authenticated remote tools.
 
+Setup has two parts: install and enable this plugin, then configure and
+authorize the DSers OAuth connection as described in
+[Install in Hermes](#install-in-hermes). Installing and enabling the plugin
+alone does not complete the connection.
+
 ## Multiple sourcing platforms and sales channels
 
 DSers's [integration ecosystem](https://www.dsers.com/integration) includes:
@@ -78,6 +83,8 @@ No workflow skills are bundled in this release.
 
 The plugin does not bundle DSers server code or maintain a fixed tool list.
 Hermes discovers the tools available to the authorized account at runtime.
+The remote service and its tool set can change independently of the installed
+plugin version; the plugin version identifies the connection package.
 
 ## Install in Hermes
 
@@ -103,9 +110,10 @@ mcp_servers:
     strict_redirect_headers: true
 ```
 
-This step is required: Hermes's portable remote MCP adapter currently does
-not accept an `auth` field in `mcp.json`. A same-name native server overrides
-the portable entry, including its call policy. Keep the settings above.
+On the validated Hermes v0.22.5 release, this step is required: the portable
+remote MCP adapter does not accept an `auth` field in `mcp.json`.
+A same-name native server overrides the portable entry, including its call
+policy. Keep the settings above.
 
 ```sh
 hermes plugins enable dsers
@@ -120,6 +128,51 @@ setup so the MCP tools are available in the session.
 
 Start a new conversation with `hermes chat` and try the read-only store overview
 in the table above. If Hermes has no model configured, run `hermes model` first.
+
+Successful sign-in and tool discovery verify the connection, but do not verify
+access to every business operation. Confirm setup with a read-only request:
+
+> Show my DSers plan and list my connected stores. Do not make any changes.
+
+If access is denied, check the account's subscription and permissions. A Basic
+account cannot use the MCP service even if sign-in or tool discovery succeeds.
+
+## Troubleshooting
+
+- **No DSers tools in chat:** check that the connection was configured in the
+  same profile and backend as the chat, run `hermes mcp test dsers`, and restart
+  the session after setup. A model provider must also be configured.
+- **Authorization expired or the wrong account is connected:** sign out of
+  DSers in the browser if switching accounts, then run `hermes mcp login dsers`
+  and authorize the intended account. This replaces the saved MCP login for
+  `dsers` in the active profile. Restart affected sessions afterward.
+- **Plan or operation restriction:** confirm Advanced, Pro, or Enterprise
+  access and the required store permissions. Available tools do not guarantee
+  permission to execute every operation. See the
+  [DSers service reference](https://www.dsers.com/en/mcp-server) for current
+  access requirements and usage limits.
+
+For DSers account or service assistance, use the
+[DSers Help Center](https://help.dsers.com/) or email `support@dserspro.com`.
+Report plugin packaging or documentation issues through
+[GitHub Issues](https://github.com/dsers/dsers-agent-plugin/issues).
+
+## Remove the plugin and connection
+
+The manually configured `mcp_servers.dsers` connection is independent of the
+plugin. Disabling or removing the plugin alone leaves that connection and its
+cached MCP OAuth credentials in place, so DSers tools may remain available.
+
+To remove both from the active profile, run:
+
+```sh
+hermes plugins remove dsers
+hermes mcp remove dsers
+```
+
+The second command removes the native connection and clears its cached MCP
+OAuth credentials. Restart affected sessions or backends afterward. Local
+credential removal does not itself revoke the grant on the DSers service.
 
 ## Links
 

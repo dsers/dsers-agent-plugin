@@ -27,7 +27,10 @@ account, channel, and exposed tools.
 ## Start with Hermes
 
 The [DSers dropshipping plugin for Hermes](plugins/hermes/README.md) connects
-your DSers account to Hermes Agent. After installing and authorizing it, try:
+your DSers account to Hermes Agent. Setup requires a DSers Advanced, Pro, or
+Enterprise subscription and the one-time OAuth connection configuration in
+the linked guide. Installing and enabling the plugin alone does not complete
+the connection. After setup and authorization, try:
 
 > Show my connected DSers stores and summarize the orders awaiting fulfillment.
 
