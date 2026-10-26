@@ -46,8 +46,10 @@ hermes mcp test dsers
 
 2026-10-26，使用 Hermes 官方源码的解析器及准入验证器检查 `plugins/hermes/`，
 识别到 1 个 MCP 服务，无诊断警告，安全扫描为 `safe`。
-具体源码 SHA 和验证范围见[验证记录](validation.md)。当前机器未安装
-Hermes CLI；这次使用官方 Python 验证入口，并非完整 CLI/OAuth 联调。
+随后在 Hermes v0.22.5 上完成官方 CLI 验证及 Plugin Doctor 检查，均通过。
+你提供的测试输出确认 OAuth 授权成功，`hermes mcp test dsers` 连接成功并
+发现 60 个工具；配置 DeepSeek 后，你也确认只读业务查询测试成功。
+具体源码 SHA、测试来源和验证范围见[验证记录](validation.md)。
 
 已检查公开发现端点：
 
@@ -56,17 +58,12 @@ Hermes CLI；这次使用官方 Python 验证入口，并非完整 CLI/OAuth 联
 - 授权服务器：`https://ai.dsers.com/.well-known/oauth-authorization-server`。
 - 元数据声明支持 PKCE S256、动态客户端注册、授权码和 refresh token。
 
-以上只能说明发现信息存在，不能证明完整 OAuth 流程和工具调用成功。
-正式提交前还需完成：
+已完成安装、OAuth、工具发现和一次只读查询的基础联调；并非全部
+60 个工具均已逐项测试。写操作审批行为和令牌刷新尚未专门验证。
 
-1. 在实际目标 Hermes 版本上运行官方验证命令：
-   `hermes plugins validate /绝对路径/dsers-agent-plugin/plugins/hermes --install-deps`。
-2. 运行 `hermes plugins doctor /绝对路径/dsers-agent-plugin/plugins/hermes --ci`。
-3. 安装插件，合并 OAuth 配置，使用测试账号完成浏览器授权。
-4. 确认 Hermes 发现实际工具；检查服务端工具的输入 schema 和只读标注。
-5. 完成一次用户授权的只读查询，确认能返回预期结果。不要为验证连接
-   创建、修改或删除真实业务数据。
-6. 移除 README 的未验证状态说明之前，补充实际通过的版本和验证结果。
+正式提交前，需将更新后的文档提交并推送，在最终发布树上重新运行
+`hermes plugins validate /绝对路径/dsers-agent-plugin/plugins/hermes --install-deps`，
+并将对应的完整 commit SHA 用于目录申请。
 
 ## 提交 Hermes Catalog
 
@@ -76,8 +73,8 @@ Hermes CLI；这次使用官方 Python 验证入口，并非完整 CLI/OAuth 联
    仓库地址使用 `https://github.com/dsers/dsers-agent-plugin`，必须填写
    `subdir: plugins/hermes`，让安装器和审核 CI 定位到 Hermes 插件目录。
 3. 版本填写 `"0.1.0"`；`sha` 使用实际发布提交。`maintainer` 使用真实
-   提交者账号；`requires_hermes` 使用已测试且确实支持所需功能的
-   SemVer 版本。不要把日期、分支名或占位符作为发布值。
+   提交者账号；`requires_hermes` 可设为 `">=0.22.5"`，对应本次实际验证
+   的发布版本，尚未验证更早版本。不要把日期、分支名或占位符作为发布值。
 4. 目录默认以 `community` 申请；`verified` 或 `official` 由 Nous 团队
    决定。README 需保持英文优先。
 5. 在 PR 说明 DSers 功能、通用插件格式、OAuth 配置这一步

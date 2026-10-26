@@ -2,14 +2,31 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "dsers",
   "version": "0.1.0",
-  "description": "Connect to DSers through its remote MCP server and use the tools available to your authorized account.",
+  "description": "DSers dropshipping plugin for dropshippers using AliExpress and Shopify: product sourcing, supplier mapping, order fulfillment and shipment tracking.",
   "author": {
     "name": "DSers",
-    "url": "https://github.com/dsers"
+    "url": "https://www.dsers.com/"
   },
+  "homepage": "https://www.dsers.com/",
   "repository": "https://github.com/dsers/dsers-agent-plugin",
   "license": "MIT",
-  "keywords": ["dsers", "dropshipping", "ecommerce", "mcp"],
+  "keywords": [
+    "dsers",
+    "dropshipping",
+    "dropshipper",
+    "dropshippers",
+    "drop-shipping",
+    "aliexpress",
+    "shopify",
+    "ecommerce",
+    "product-sourcing",
+    "supplier-mapping",
+    "order-fulfillment",
+    "shipment-tracking",
+    "hermes",
+    "agent-plugin",
+    "mcp"
+  ],
   "extensions": {
     "com.nousresearch.hermes": {
       "servers": {

@@ -25,11 +25,35 @@ Results:
 - Warnings: none.
 - Isolation audit: `portable`, `host_ready: true`.
 
-The check count and isolation verdict above describe upstream static validation.
-They do not establish an authenticated live connection. The native Hermes CLI
-is not installed on this validation machine, so `hermes plugins doctor` and
-installation through the CLI were not run. The upstream SHA is a development
-snapshot, not a declared minimum supported release.
+The check count and isolation verdict above describe the initial upstream
+static validation. The upstream SHA is a development snapshot, not a declared
+minimum supported release. Released-CLI and live connection results follow.
+
+## Released Hermes CLI and connection testing
+
+Environment: macOS arm64, Hermes v0.22.5, release commit
+`bf0203a794a0` (short SHA reported by the CLI), Python 3.14.9.
+The installed plugin source was commit
+`194c1dd9d1633e12e8859e2f626d2a2b7617b913` of this repository.
+
+- `hermes plugins validate <repository>/plugins/hermes`: passed, including
+  the security scan (`safe`).
+- `hermes plugins doctor <repository>/plugins/hermes --ci`: passed runtime
+  discovery, manifest parsing, import, and registration checks. It reported
+  zero native tool/hook registrations; remote MCP tools are discovered by
+  the MCP client rather than registered as native Python tools.
+- GitHub subdirectory installation: the maintainer supplied the successful
+  install output for `dsers/dsers-agent-plugin/plugins/hermes`.
+- Browser OAuth: supplied output reported `Authenticated — 60 tool(s) available`.
+- `hermes mcp test dsers`: supplied output reported a successful HTTP
+  connection and 60 discovered tools.
+- Read-only business query: after configuring DeepSeek, the maintainer
+  confirmed that the requested read-only test completed successfully. This
+  outcome is maintainer-reported; no business response data is stored here.
+
+The tool count records this test account at this time and is not a fixed
+capability promise. This evidence does not establish that all 60 tools, write
+approvals, token refresh, or every account configuration have been tested.
 
 ## Public OAuth discovery
 
@@ -44,13 +68,14 @@ Unauthenticated reads confirmed:
   declaring authorization code and refresh token grants, PKCE S256, a dynamic
   client registration endpoint, and token endpoint authentication method `none`.
 
-Only public metadata was read. No OAuth registration, user authorization, token
-exchange, authenticated `tools/list`, or business tool call was performed.
+This initial discovery check read only public metadata. Subsequent browser
+authorization and authenticated testing are recorded in the preceding section.
 
 ## Required before catalog submission
 
-Validate and install with the intended released Hermes version, complete
-browser authorization with a test DSers account, discover the real tools, and
-perform one authorized read-only query. Verify the server's tool annotations
-and the host's write approval behavior. Record that release and outcome before
-declaring compatibility or submitting a pinned catalog entry.
+Commit and publish these verification notes, then pin the resulting full
+40-character commit SHA in the catalog entry with `subdir: plugins/hermes`.
+Use `requires_hermes: ">=0.22.5"` as the tested release floor; earlier releases
+have not been validated. Re-run package validation at the final pinned tree.
+Write approval behavior and token refresh remain outside the completed test
+scope and must not be described as verified in the submission.

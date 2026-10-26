@@ -1,16 +1,46 @@
-# DSers Plugin for Hermes
+# DSers — Dropshipping Plugin for Hermes
 
-A portable Agent Plugins v1 package that connects an agent to the
-[DSers MCP server](https://ai.dsers.com/mcp).
-This package targets Hermes Agent and lives in `plugins/hermes/` within the
-[DSers Agent Plugins repository](https://github.com/dsers/dsers-agent-plugin).
+Run your [DSers](https://www.dsers.com/) dropshipping operations from Hermes
+Agent. Built for dropshippers using AliExpress and Shopify, this plugin brings
+product sourcing, supplier mapping, order fulfillment, and shipment tracking
+into your agent conversation.
 
-**Status:** initial package. The Hermes upstream parser and admission validator
-pass, and public OAuth discovery has been checked. Authenticated discovery and
-a read-only tool call still need an end-to-end test. This repository has not
-yet been listed in the Hermes Plugin Catalog. See [validation evidence](docs/validation.md).
+Connect your DSers account, ask for the outcome you need, and let Hermes use
+the available DSers actions within your account permissions and approvals.
+The service connection uses DSers's authenticated remote tools.
+
+**Status:** tested with Hermes v0.22.5. Package validation and Plugin Doctor
+pass. Browser OAuth and authenticated discovery succeeded with 60 tools;
+the maintainer also confirmed a successful read-only business query using
+DeepSeek. This repository has not yet been listed in the Hermes Plugin Catalog.
+See [validation evidence](docs/validation.md).
 
 [中文接入与上架说明](docs/hermes.zh-CN.md)
+
+## For dropshippers and ecommerce teams
+
+| Task | Example request | Relevant discovered DSers tools |
+| --- | --- | --- |
+| Store overview | “List my connected DSers stores.” | `list_stores` |
+| Product sourcing | “Find AliExpress products matching this keyword and compare shipping to the US.” | `search_supplier_products`, `list_supplier_product_shipping_methods_and_cost` |
+| Product preparation | “Show the products in my import list and inspect this product's pricing.” | `list_pre_publish_products`, `get_pre_publish_product` |
+| Supplier mapping | “Inspect the supplier mapping for this store product.” | `get_store_product_mapping` |
+| Order fulfillment | “Show orders awaiting fulfillment and diagnose this order's blockers.” | `list_orders`, `get_order`, `diagnose_order_issue` |
+| Shipment tracking | “Check this package's tracking events.” | `list_packages`, `get_package_details` |
+
+The authenticated server also exposes supported write operations such as
+listing publication, pricing changes, supplier-order placement, and tracking
+updates. Their availability depends on your plan, store, and permissions;
+Hermes approvals still apply. The table illustrates use cases, not a promise
+that every tool or account combination has been tested.
+
+## Requirements
+
+- A DSers account with access to the requested operations and relevant stores.
+- Hermes Agent; this package was validated on v0.22.5.
+- A configured model provider in Hermes to interpret requests and call tools.
+  The maintainer's read-only smoke test used DeepSeek.
+- Browser sign-in to authorize access to DSers.
 
 ## Package
 
@@ -21,18 +51,22 @@ examples/hermes.config.yaml        Native Hermes OAuth configuration
 LICENSE                           MIT license for this package
 ```
 
-The plugin does not bundle DSers server code or hard-code a tool list. It
-exposes all tools the server returns for the authorized account, subject to
-the host's settings and approvals. Available features depend on DSers account
-permissions and granted OAuth scopes.
+This is a portable Agent Plugins v1 package in `plugins/hermes/` of the
+[DSers Agent Plugins repository](https://github.com/dsers/dsers-agent-plugin).
+MCP supplies its current service connection; plugin metadata, documentation,
+host policy, and future workflow components belong to the plugin package.
+No workflow skills are bundled in this release.
+
+The plugin does not bundle DSers server code or maintain a fixed tool list.
+Hermes discovers the tools available to the authorized account at runtime;
+the names in the use-case table are examples from the successful discovery test.
 
 ## Install in Hermes
 
-Use a current Hermes release with portable Agent Plugins v1 and remote MCP
-support. Before publication, validate against the specific Hermes release
-that will be declared in the catalog entry.
+Tested release: Hermes v0.22.5. Use a release with portable Agent Plugins v1
+and remote MCP support. Earlier releases have not been validated by this project.
 
-Once these files are committed and pushed to this repository:
+Install directly from this repository:
 
 ```sh
 hermes plugins install dsers/dsers-agent-plugin/plugins/hermes --no-enable
@@ -66,13 +100,20 @@ PKCE S256, dynamic client registration, and refresh tokens. No API key or
 manually embedded bearer token is needed. Restart the Hermes session after
 setup so the MCP tools are available in the session.
 
-Example requests after connection:
+Start a new conversation with `hermes chat` and try the read-only store overview
+in the table above. If Hermes has no model configured, run `hermes model` first.
 
-- “Show the DSers capabilities available to my account.”
-- “Use the available read-only tools to show my DSers stores.”
-- “Check this DSers order's status: `<order ID>`.”
+## Find and install DSers
 
-These are example intents; the actual server must expose a matching tool.
+Direct repository installation is available now. The Hermes Plugin Catalog
+entry has not been submitted or accepted yet, so catalog search is not live.
+After acceptance and catalog publication, users can search for `dsers` or the
+business terms included in its catalog description, such as `dropshipping`,
+`AliExpress`, `Shopify`, `fulfillment`, and `tracking`.
+
+[DSers product website](https://www.dsers.com/) ·
+[DSers service capability reference](https://www.dsers.com/en/mcp-server) ·
+[Plugin source](https://github.com/dsers/dsers-agent-plugin/tree/main/plugins/hermes)
 
 ## Data, network, and approvals
 
