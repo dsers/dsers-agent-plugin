@@ -42,6 +42,8 @@ Hermes approvals still apply.
 ## Requirements
 
 - A DSers account with access to the requested operations and relevant stores.
+- A DSers Advanced, Pro, or Enterprise subscription is required to use the
+  connected MCP service. The Basic plan does not include MCP access.
 - Hermes Agent; this package was validated on v0.22.5.
 - A configured model provider in Hermes to interpret requests and call tools.
 - Browser sign-in to authorize access to DSers.
