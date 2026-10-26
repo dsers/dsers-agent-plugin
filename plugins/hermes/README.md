@@ -129,8 +129,12 @@ setup so the MCP tools are available in the session.
 Start a new conversation with `hermes chat` and try the read-only store overview
 in the table above. If Hermes has no model configured, run `hermes model` first.
 
-Successful sign-in and tool discovery verify the connection, but do not verify
-access to every business operation. Confirm setup with a read-only request:
+Successful authorization confirms sign-in, but does not guarantee access to
+every business operation. Each call depends on the plan's MCP eligibility,
+account and store permissions, tools exposed by the service, any applicable
+usage quota, and the host's approval policy. Tool discovery alone does not
+establish that an operation is permitted or that quota remains available.
+Confirm setup with a read-only request:
 
 > Show my DSers plan and list my connected stores. Do not make any changes.
 
@@ -151,6 +155,9 @@ account cannot use the MCP service even if sign-in or tool discovery succeeds.
   permission to execute every operation. See the
   [DSers service reference](https://www.dsers.com/en/mcp-server) for current
   access requirements and usage limits.
+- **Usage limit reached:** check the service's returned error and any reset
+  information. See the [official DSers MCP guide](https://www.dsers.com/en/mcp-server)
+  for current metering rules and plan limits.
 
 For DSers account or service assistance, use the
 [DSers Help Center](https://help.dsers.com/) or email `support@dserspro.com`.

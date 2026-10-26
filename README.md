@@ -58,8 +58,12 @@ Hermes is the currently available integration.
 | Order fulfillment | Review orders, diagnose blockers, and perform explicitly authorized supplier-order actions |
 | Shipment tracking | Inspect packages and tracking events and perform supported tracking updates |
 
-Availability depends on the DSers plan, account permissions, connected store,
-and exposed tools.
+Availability depends on the plan's MCP eligibility, account and store
+permissions, tools exposed by the service, any applicable usage quota, and
+the host's approval policy. Successful authorization does not guarantee that
+a requested operation can be called. See the
+[official DSers MCP guide](https://www.dsers.com/en/mcp-server) for current
+access requirements and usage rules.
 
 ## Repository structure
 
