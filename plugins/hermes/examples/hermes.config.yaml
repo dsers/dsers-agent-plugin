@@ -1,0 +1,9 @@
+# Merge this entry into the active Hermes profile's config.yaml.
+# Preserve other mcp_servers entries and other top-level configuration.
+# A same-name native entry replaces the portable plugin's MCP entry entirely.
+mcp_servers:
+  dsers:
+    url: https://ai.dsers.com/mcp
+    auth: oauth
+    trust: untrusted
+    strict_redirect_headers: true

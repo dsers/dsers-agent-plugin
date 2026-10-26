@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dsers",
+  "version": "0.1.0",
+  "description": "Connect to DSers through its remote MCP server and use the tools available to your authorized account.",
+  "author": {
+    "name": "DSers",
+    "url": "https://github.com/dsers"
+  },
+  "repository": "https://github.com/dsers/dsers-agent-plugin",
+  "license": "MIT",
+  "keywords": ["dsers", "dropshipping", "ecommerce", "mcp"],
+  "extensions": {
+    "com.nousresearch.hermes": {
+      "servers": {
+        "dsers": {
+          "trust": "untrusted"
+        }
+      }
+    }
+  }
+}
