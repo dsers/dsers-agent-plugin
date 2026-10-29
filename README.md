@@ -40,13 +40,26 @@ hermes plugins install dsers/dsers-agent-plugin/plugins/hermes --no-enable
 
 Continue with the [OAuth setup instructions](plugins/hermes/README.md#install-in-hermes).
 
+## Start with Claude
+
+The [DSers dropshipping plugin for Claude](plugins/claude/README.md) connects
+your DSers account to Claude and adds skills for sourcing, listings, pricing,
+supplier mapping, orders, and tracking. In Claude Code:
+
+```text
+/plugin marketplace add dsers/dsers-agent-plugin
+/plugin install dsers@dsers
+```
+
+Then run `/mcp` and sign in to DSers. See the
+[plugin README](plugins/claude/README.md#install) for the Claude apps.
+
 ## Plugins
 
 | Platform | Package | Compatibility |
 | --- | --- | --- |
 | Hermes Agent | [plugins/hermes](plugins/hermes/README.md) | Hermes v0.22.5; CLI and Desktop agent integration |
-
-Hermes is the currently available integration.
+| Claude | [plugins/claude](plugins/claude/README.md) | Claude Code, Claude apps, and Cowork |
 
 ## What you can do
 
@@ -71,11 +84,19 @@ access requirements and usage rules.
 dsers-agent-plugin/
 ├── README.md
 ├── LICENSE
+├── .claude-plugin/
+│   └── marketplace.json
 └── plugins/
-    └── hermes/
-        ├── plugin.json
-        ├── mcp.json
-        ├── examples/
+    ├── hermes/
+    │   ├── plugin.json
+    │   ├── mcp.json
+    │   ├── examples/
+    │   ├── README.md
+    │   └── LICENSE
+    └── claude/
+        ├── .claude-plugin/
+        ├── .mcp.json
+        ├── skills/
         ├── README.md
         └── LICENSE
 ```
@@ -84,7 +105,8 @@ For Hermes installation and usage, see the
 [plugin README](plugins/hermes/README.md).
 
 Install each plugin from its own subdirectory. The repository root is an
-index, not an installable plugin.
+index, not an installable plugin. For Claude Code, `.claude-plugin/marketplace.json`
+lists the Claude plugin so it can be installed from this repository.
 
 The packages connect to the existing DSers MCP service at
 `https://ai.dsers.com/mcp` using OAuth 2.1. This repository does not include
@@ -97,6 +119,7 @@ workflow instructions and other components supported by their host.
 
 - [DSers dropshipping platform](https://www.dsers.com/)
 - [DSers plugin for Hermes and setup guide](plugins/hermes/README.md)
+- [DSers plugin for Claude and setup guide](plugins/claude/README.md)
 - [DSers service capabilities](https://www.dsers.com/en/mcp-server)
 
 ## License

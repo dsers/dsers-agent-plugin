@@ -1,0 +1,27 @@
+{
+  "name": "dsers",
+  "version": "0.1.0",
+  "description": "Run a dropshipping business with DSers from Claude: find products and suppliers, clean up and publish listings, check profit and set pricing rules, keep supplier mapping working, place and pay for supplier orders, and track parcels. Uses DSers MCP, the official DSers MCP server.",
+  "author": {
+    "name": "DSers",
+    "url": "https://www.dsers.com/"
+  },
+  "homepage": "https://www.dsers.com/",
+  "repository": "https://github.com/dsers/dsers-agent-plugin",
+  "license": "MIT",
+  "privacyPolicyUrl": "https://www.dsers.com/privacy",
+  "keywords": [
+    "dsers",
+    "dropshipping",
+    "ecommerce",
+    "shopify",
+    "aliexpress",
+    "1688",
+    "alibaba",
+    "suppliers",
+    "orders",
+    "fulfillment",
+    "pricing",
+    "mcp"
+  ]
+}

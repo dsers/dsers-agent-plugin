@@ -1,0 +1,15 @@
+{
+  "name": "dsers",
+  "description": "DSers plugins for dropshipping: find suppliers and products, manage stores, fulfill orders, and track shipments.",
+  "owner": {
+    "name": "DSers",
+    "url": "https://www.dsers.com/"
+  },
+  "plugins": [
+    {
+      "name": "dsers",
+      "source": "./plugins/claude",
+      "description": "Run a dropshipping business with DSers from Claude: find products and suppliers, clean up and publish listings, check profit and set pricing rules, keep supplier mapping working, place and pay for supplier orders, and track parcels."
+    }
+  ]
+}
