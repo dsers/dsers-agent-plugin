@@ -7,7 +7,10 @@ fulfill orders, and track shipments in your agent conversation.
 
 Connect your DSers account, ask for the outcome you need, and let Hermes use
 the available DSers actions within your account permissions and approvals.
-The service connection uses DSers's authenticated remote tools.
+The service connection uses DSers's authenticated remote tools, and the
+plugin's skills give Hermes DSers's steps for the daily work of a dropship
+store. Before anything changes in DSers or in your store, Hermes shows what
+will change and waits for you to agree in the chat.
 
 Setup has two parts: install and enable this plugin, then configure and
 authorize the DSers OAuth connection as described in
@@ -44,9 +47,26 @@ listing publication, pricing changes, supplier-order placement, and tracking
 updates. Their availability depends on your plan, store, and permissions;
 Hermes approvals still apply.
 
+## Skills
+
+| Skill | What it helps with |
+| --- | --- |
+| account-and-stores | Getting started, connected stores and supplier accounts, reconnecting a store, plan, AI Credits, invoices |
+| product-sourcing | Product ideas, supplier search by keyword or image, comparing cost, stock, and shipping, adding products to the Import List |
+| listing-editing | Cleaning up imported titles, descriptions, variants, and images, prices before publishing, collections and tags |
+| product-publishing | Publishing Import List products to your stores with the shipping and publish settings you choose |
+| profit-and-pricing | Profit per order and product after fees and ads, pricing rules, store-wide and single-product price changes |
+| supplier-mapping | Linking store products to suppliers, backup suppliers, suppliers by country, bundles, AI Mapping, supplier changes |
+| order-fulfillment | Why orders are stuck, fixing addresses and shipping methods, placing orders with suppliers, payment links |
+| package-tracking | Parcel status, delivery exceptions, sending tracking to your store, buyer notifications, delivery disputes |
+
+While the plugin is enabled, Hermes offers these skills to the agent and loads
+the one that fits your request.
+
 ## Requirements
 
 - A DSers account with access to the requested operations and relevant stores.
+  [Sign up](https://accounts.dsers.com/accounts/register?utm_source=hermes_plugin&utm_medium=ai_assistant&utm_campaign=dsers_plugin&utm_content=readme)
 - A DSers Advanced, Pro, or Enterprise subscription is required to use the
   connected MCP service. The Basic plan does not include MCP access.
 - Hermes Agent; this package was validated on v0.22.5.
@@ -71,15 +91,18 @@ for profile and backend selection.
 ```text
 plugin.json                       Plugin identity and Hermes call policy
 mcp.json                          Remote MCP connection
+skills/                           Eight DSers workflow skills
 examples/hermes.config.yaml        Native Hermes OAuth configuration
 LICENSE                           MIT license for this package
 ```
 
 This is a portable Agent Plugins v1 package in `plugins/hermes/` of the
 [DSers Agent Plugins repository](https://github.com/dsers/dsers-agent-plugin).
-MCP supplies its current service connection; plugin metadata, documentation,
-host policy, and future workflow components belong to the plugin package.
-No workflow skills are bundled in this release.
+MCP supplies the service connection and the skills supply DSers's workflows;
+plugin metadata, documentation, and host policy also belong to the plugin
+package. The skills name DSers tools as Hermes registers them
+(`mcp__dsers__<tool>`), so keep the server name `dsers` in the OAuth
+configuration below.
 
 The plugin does not bundle DSers server code or maintain a fixed tool list.
 Hermes discovers the tools available to the authorized account at runtime.
@@ -196,7 +219,8 @@ credential removal does not itself revoke the grant on the DSers service.
 - DSers tools can include write operations. `trust: untrusted` asks for host
   approval for tools that are not annotated as read-only; tools with missing
   annotations may also prompt. No tool filter is applied by this package.
-- The package contains connection manifests and documentation. It launches no bundled server,
+- The package contains connection manifests, skills written as Markdown
+  instructions, and documentation. It runs no bundled code: no server, scripts,
   shell hooks, background process, or separate telemetry collector.
 - MIT covers this repository's files. Use of the DSers service remains
   subject to DSers service terms and the user's account permissions.
