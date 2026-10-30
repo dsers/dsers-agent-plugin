@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection."
 metadata:
   author: DSers
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Product publishing
@@ -51,9 +51,9 @@ Publishing
 2. **Ready?** For each product, check with `mcp__dsers__get_pre_publish_product`: a cleaned-up title (no supplier keyword stuffing), a price on every variant, the variants the seller wants, and stock. List the problems and offer to fix them with the listing-editing skill first. Offer a review of collections, tags, and category; skip it if the user does not want it.
 3. **Shopify shipping profile.** Each Shopify store needs one of its shipping profiles and a location from `mcp__dsers__list_stores`. If there are several, ask which one. If the store has none, offer to create one: get the store's countries and currency with `mcp__dsers__list_shopify_shipping_zones`, agree the countries, rate name, and flat rate with the user, create it with `mcp__dsers__create_shopify_shipping_profile`, then read `mcp__dsers__list_stores` again for the new IDs.
 4. **Shipping method.** Call `mcp__dsers__get_push_shipping_recommendation` once for all the product-store pairs. For each pair with options, show them and let the user pick one or keep the default. Use a choice only for the pair it was made for; a pair with no options publishes with the default.
-5. **Publish settings.** Read the store's defaults from `mcp__dsers__list_stores` and work out the effective value of each setting, from [references/publish-settings.md](references/publish-settings.md). Do not ask about each one; show them in the preview, and point out the ones that matter most if the user has not said: live or draft, visible in the online store, and automatic stock and price updates.
+5. **Publish settings.** Read the store's defaults from `mcp__dsers__list_stores` and set each setting from them unless the user chose otherwise; a setting left out of the publish call does not follow the store ([references/publish-settings.md](references/publish-settings.md)). Do not ask about each one; show them in the preview, and point out the ones that matter most if the user has not said: live or draft, visible in the online store, and automatic stock and price updates.
 6. **Preview.** One table: product, store, platform, live or draft, visible or not, shipping profile and location (Shopify), shipping method options, and the main settings in plain words. Below it, list the product problems from step 2 and every choice the user can make. Get agreement, or the changes the user wants.
-7. **Publish.** Call `mcp__dsers__publish_products_to_stores` once for the agreed pairs. If DSers blocks it before starting, nothing was published: explain each reason and fix it. Otherwise follow the task with `mcp__dsers__get_job_status` until it ends, and report each pair: published, failed with the reason, or unknown. Never publish the same pair again because its status is unclear; check the store's products first.
+7. **Publish.** Call `mcp__dsers__publish_products_to_stores` once for the agreed pairs, with every setting shown in the preview. If DSers blocks it before starting, nothing was published: explain each reason and fix it. Otherwise follow the task with `mcp__dsers__get_job_status` until it ends, and report each pair: published, failed with the reason, or unknown. Never publish the same pair again because its status is unclear; check the store's products first.
 
 ## After publishing
 

@@ -1,6 +1,6 @@
 # Publish settings
 
-`dsers__list_stores` returns each store's publish defaults. A setting the request leaves out uses that default, so show the effective value of every setting in the preview, in these words.
+`dsers__list_stores` returns each store's publish defaults, but DSers does not apply them by itself. A setting the publish call leaves out gets a fixed value, not the store's default: active, hidden from the online store, no other sales channels, automatic stock and price updates off, the store's pricing rule not applied, and not taxable. Only the language and the Shopify shipping profile follow the store. So send every setting in the call, using the store's default unless the user chose otherwise, and show the value of each one in the preview, in these words.
 
 | Setting | In plain words | Suggest |
 |---|---|---|
@@ -9,8 +9,9 @@
 | Other sales channels | Also offer the product on channels connected to the store, such as Shop, Google & YouTube, TikTok, or Facebook & Instagram. A channel the store does not have is ignored | Only the channels the seller uses |
 | Keep selling when out of stock | Customers can still buy a variant with no stock | Off for dropshipping, so the store does not take orders the supplier cannot fill |
 | Automatic stock updates | DSers updates store stock from supplier stock | On, so sold-out supplier variants stop selling |
+| Apply the store's pricing rule (per product and store) | Prices the product with the store's pricing rule instead of its Import List price | The store's default from `dsers__list_stores` |
 | Automatic price updates | DSers updates store prices when supplier costs change, using the pricing rule | On when the store uses a pricing rule and prices should follow costs; off when prices are set by hand |
-| Allow manual price updates | Allows manual price updates after publishing, as the tool describes it | Keep the default (on) unless the seller asks |
+| Allow manual price updates | Allows manual price changes after publishing (the tool's default is on) | Keep the default (on) unless the seller asks |
 | Description | Push the supplier's overview, its specifications, or both | Both, after the description has been cleaned up |
 | Images | Only the images selected in the Import List, or every available image | Selected only, after unwanted images were removed |
 | Taxable | Whether the store charges tax on the product | Ask the seller; it depends on where they sell and their tax setup |

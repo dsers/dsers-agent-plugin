@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection. AI Mapping uses AI Credits."
 metadata:
   author: DSers
-  version: "0.1.4"
+  version: "0.1.5"
 ---
 
 # Supplier mapping
@@ -39,7 +39,7 @@ Every product the store sells needs a working link to a supplier variant, or its
 
 ### Mapping health: "Which products have no supplier?"
 
-1. `dsers__list_managed_store_products` for each store the user cares about, with the mapping-status filters: no supplier, and mapping lost or incomplete.
+1. `dsers__list_managed_store_products` for each store the user cares about, with the mapping status unmapped for products with no supplier, and with the supplier product status (not available, not found, out of stock, SKU changed) for products whose supplier link broke.
 2. `dsers__list_orders` with `supplier_platform_id` 0 lists orders waiting on unmapped items. Match them to the products.
 3. Report the total, each group with its products, and the orders each product is holding up. Offer to map the products with waiting orders first.
 

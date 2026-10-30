@@ -1,0 +1,7 @@
+{
+  "name": "@dsers/dsers",
+  "version": "0.1.5",
+  "description": "Connect your favorite AI client to DSers and move from product discovery to listings, store operations, orders, fulfillment, and delivery tracking — all in one conversation.",
+  "license": "MIT",
+  "type": "module"
+}
