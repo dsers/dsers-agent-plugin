@@ -24,29 +24,28 @@ workflow for other storefronts. The platform list describes the DSers
 ecosystem; actions available through each plugin depend on the connected
 account, channel, and exposed tools.
 
-## Start with Hermes
-
-The [DSers dropshipping plugin for Hermes](plugins/hermes/README.md) connects
-your DSers account to Hermes Agent. Setup requires a DSers Advanced, Pro, or
-Enterprise subscription and the one-time OAuth connection configuration in
-the linked guide. Installing and enabling the plugin alone does not complete
-the connection. After setup and authorization, try:
-
-> Show my connected DSers stores and summarize the orders awaiting fulfillment.
-
-```sh
-hermes plugins install dsers/dsers-agent-plugin/plugins/hermes --no-enable
-```
-
-Continue with the [OAuth setup instructions](plugins/hermes/README.md#install-in-hermes).
-
 ## Plugins
 
-| Platform | Package | Compatibility |
-| --- | --- | --- |
-| Hermes Agent | [plugins/hermes](plugins/hermes/README.md) | Hermes v0.22.5; CLI and Desktop agent integration |
+Each plugin connects your DSers account to DSers MCP and includes eight DSers
+skills for the daily work of a dropship store: product sourcing, listing
+editing, publishing, profit and pricing, supplier mapping, order fulfillment,
+package tracking, and account and store setup. The skills are the same
+workflows in every plugin, written for each host's tool names and setup.
 
-Hermes is the currently available integration.
+| Platform | Package | Install | Compatibility |
+| --- | --- | --- | --- |
+| Hermes Agent | [plugins/hermes](plugins/hermes/README.md) | `hermes plugins install dsers/dsers-agent-plugin/plugins/hermes --no-enable`, then the [OAuth setup](plugins/hermes/README.md#install-in-hermes) | Hermes v0.22.5; CLI and Desktop |
+| OpenClaw | [plugins/openclaw](plugins/openclaw/README.md) | `openclaw plugins install clawhub:@dsers/dsers-dropshipping-automation`, then Connect in Settings → Plugins → DSers | OpenClaw 2026.10.9 or later |
+| Claude | [dsers/claude-dsers-plugin](https://github.com/dsers/claude-dsers-plugin) | Claude Code: `/plugin marketplace add dsers/claude-dsers-plugin` | Claude Code |
+
+The Claude plugin is kept in its own repository because it is submitted to the
+Claude directory from there.
+
+Every plugin requires a DSers Advanced, Pro, or Enterprise subscription.
+Installing a plugin alone does not complete the connection; each guide covers
+the DSers sign-in. After setup and authorization, try:
+
+> Show my connected DSers stores and summarize the orders awaiting fulfillment.
 
 ## What you can do
 
@@ -71,17 +70,28 @@ access requirements and usage rules.
 dsers-agent-plugin/
 ├── README.md
 ├── LICENSE
+├── assets/
+│   └── hermes-catalog.png
 └── plugins/
-    └── hermes/
-        ├── plugin.json
-        ├── mcp.json
-        ├── examples/
+    ├── hermes/
+    │   ├── plugin.json
+    │   ├── mcp.json
+    │   ├── skills/
+    │   ├── examples/
+    │   ├── README.md
+    │   └── LICENSE
+    └── openclaw/
+        ├── .claude-plugin/plugin.json
+        ├── .mcp.json
+        ├── openclaw.plugin.json
+        ├── skills/
+        ├── assets/icon.png
         ├── README.md
         └── LICENSE
 ```
 
-For Hermes installation and usage, see the
-[plugin README](plugins/hermes/README.md).
+Each plugin's README covers installation and usage. `assets/` holds images
+for plugin directory listings; they are not part of any plugin package.
 
 Install each plugin from its own subdirectory. The repository root is an
 index, not an installable plugin.
@@ -90,13 +100,14 @@ The packages connect to the existing DSers MCP service at
 `https://ai.dsers.com/mcp` using OAuth 2.1. This repository does not include
 the MCP server implementation or user credentials.
 
-MCP provides the current service connection. Plugin packages can also contain
-workflow instructions and other components supported by their host.
+MCP provides the service connection. The skills carry DSers workflows as
+Markdown instructions; the packages run no bundled code.
 
 ## Find DSers
 
 - [DSers dropshipping platform](https://www.dsers.com/)
 - [DSers plugin for Hermes and setup guide](plugins/hermes/README.md)
+- [DSers plugin for OpenClaw and setup guide](plugins/openclaw/README.md)
 - [DSers service capabilities](https://www.dsers.com/en/mcp-server)
 
 ## License

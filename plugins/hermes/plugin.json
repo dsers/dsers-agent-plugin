@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "dsers",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DSers multi-platform dropshipping plugin for dropshippers: find suppliers and products, manage stores across sales channels, fulfill orders and track shipments.",
   "author": {
     "name": "DSers",
@@ -13,6 +13,7 @@
   "keywords": [
     "dsers",
     "dropshipping",
+    "dropship",
     "dropshipper",
     "dropshippers",
     "drop-shipping",
