@@ -35,11 +35,8 @@ workflows in every plugin, written for each host's tool names and setup.
 | Platform | Package | Install | Compatibility |
 | --- | --- | --- | --- |
 | Hermes Agent | [plugins/hermes](plugins/hermes/README.md) | `hermes plugins install dsers/dsers-agent-plugin/plugins/hermes --no-enable`, then the [OAuth setup](plugins/hermes/README.md#install-in-hermes) | Hermes v0.22.5; CLI and Desktop |
-| OpenClaw | [plugins/openclaw](plugins/openclaw/README.md) | `openclaw plugins install clawhub:@dsers/dsers-dropshipping-automation`, then Connect in Settings → Plugins → DSers | OpenClaw 2026.10.9 or later |
-| Claude | [dsers/claude-dsers-plugin](https://github.com/dsers/claude-dsers-plugin) | Claude Code: `/plugin marketplace add dsers/claude-dsers-plugin` | Claude Code |
-
-The Claude plugin is kept in its own repository because it is submitted to the
-Claude directory from there.
+| OpenClaw | [plugins/openclaw](plugins/openclaw/README.md) | `openclaw plugins install clawhub:@dsers/dsers`, then Connect in Settings → Plugins → DSers | OpenClaw 2026.10.9 or later |
+| Claude | [dsers/claude-dsers-plugin](https://github.com/dsers/claude-dsers-plugin) | Claude Code: `/plugin marketplace add dsers/claude-dsers-plugin`, then `/plugin install dsers-dropshipping-automation@claude-dsers-plugin` | Claude Code |
 
 Every plugin requires a DSers Advanced, Pro, or Enterprise subscription.
 Installing a plugin alone does not complete the connection; each guide covers
@@ -84,6 +81,7 @@ dsers-agent-plugin/
         ├── .claude-plugin/plugin.json
         ├── .mcp.json
         ├── openclaw.plugin.json
+        ├── package.json
         ├── skills/
         ├── assets/icon.png
         ├── README.md

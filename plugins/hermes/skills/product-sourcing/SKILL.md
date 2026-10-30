@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection."
 metadata:
   author: DSers
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Product sourcing
@@ -76,7 +76,7 @@ The Import List is where products wait in DSers to be edited and priced before t
 1. Show the products to add, with supplier and price. Mention the language and destination country DSers will use for them: adding a language other than English changes the account's import languages, and each language counts toward the plan's language limit.
 2. After agreement, call `mcp__dsers__create_pre_publish_products` with up to 10 products.
 3. Report each product as added or failed, with the reason. A product that already has an Import List record fails; that is not an error to retry.
-4. Next steps: clean up titles and variants with the listing-editing skill, then publish with the product-publishing skill. If a store has a pricing rule, DSers uses it to price products for that store.
+4. Next steps: clean up titles and variants with the listing-editing skill, then publish with the product-publishing skill, which can apply each store's pricing rule.
 
 ## Guardrails
 

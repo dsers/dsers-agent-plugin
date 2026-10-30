@@ -4,7 +4,7 @@ Connect your favorite AI client to DSers and move from product discovery to list
 
 This is the DSers plugin for OpenClaw. It connects OpenClaw to [DSers MCP](#dsers-mcp) and adds skills for the daily work of a dropship store: finding products and suppliers, cleaning up and publishing listings, checking profit and pricing rules, keeping supplier mapping working, placing supplier orders, and tracking parcels.
 
-Before anything changes in DSers or in your store, OpenClaw shows what will change and waits for you to agree in the chat.
+The skills tell OpenClaw to show what will change and wait for your agreement in the chat before any change in DSers or your store. OpenClaw's own tool approval settings also apply.
 
 ## What's included
 
@@ -37,7 +37,13 @@ OpenClaw picks the skill that fits your request.
 ## Install
 
 ```bash
-openclaw plugins install clawhub:@dsers/dsers-dropshipping-automation
+openclaw plugins install clawhub:@dsers/dsers
+```
+
+If you installed the DSers Dropshipping skill from ClawHub, remove it. This plugin covers the same work, and with both installed OpenClaw loads two sets of DSers instructions:
+
+```bash
+clawhub uninstall @dsers/dsers-dropshipping
 ```
 
 If the Gateway is already running, restart it so it loads the plugin:
@@ -98,6 +104,11 @@ DSers MCP works alongside the DSers dashboard. [DSers MCP documentation](https:/
 ## Troubleshooting
 
 - **No DSers tools**: open Settings → Plugins → DSers. Check that the plugin is enabled and that dsers under Accounts is connected; connect again if it asks.
+- **No DSers tools with an OpenAI model, although dsers shows Connected**: OpenClaw does not pass the DSers tools to OpenAI models that run on the Codex runtime, which is the default when you sign in with a ChatGPT account. Run OpenAI models on OpenClaw's own runtime, then start a new chat:
+
+  ```bash
+  openclaw config set models.providers.openai.agentRuntime.id openclaw
+  ```
 - **Plan or permission errors**: OpenClaw reports the message DSers returns. If it says your plan does not include MCP Connection, see the [DSers pricing page](https://www.dsers.com/pricing).
 
 ## Remove

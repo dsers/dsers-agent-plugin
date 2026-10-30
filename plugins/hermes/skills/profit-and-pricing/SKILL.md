@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection. Some rule types need a plan that includes them."
 metadata:
   author: DSers
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # Profit and pricing

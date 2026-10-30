@@ -24,7 +24,8 @@ What the user needs:
 
 How to connect:
 
-- **OpenClaw**: this plugin adds the DSers server. Open Settings → Plugins → DSers, select Connect next to dsers under Accounts, and sign in to DSers in the window that opens. Only a Gateway administrator can do this, and the sign-in is shared by everyone who uses the Gateway.
+- **OpenClaw**: this plugin adds the DSers skills and server. Open Settings → Plugins → DSers, select Connect next to dsers under Accounts, and sign in to DSers in the window that opens. Only a Gateway administrator can do this, and the sign-in is shared by everyone who uses the Gateway.
+  If dsers already shows Connected and the DSers tools are still missing, check the model: OpenClaw does not pass the DSers tools to OpenAI models that run on the Codex runtime. The user runs `openclaw config set models.providers.openai.agentRuntime.id openclaw` and starts a new chat.
 
 Never ask for a DSers password, API key, or token. If the user starts to paste one, tell them not to.
 

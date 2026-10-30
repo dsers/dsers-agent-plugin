@@ -9,8 +9,9 @@ Connect your DSers account, ask for the outcome you need, and let Hermes use
 the available DSers actions within your account permissions and approvals.
 The service connection uses DSers's authenticated remote tools, and the
 plugin's skills give Hermes DSers's steps for the daily work of a dropship
-store. Before anything changes in DSers or in your store, Hermes shows what
-will change and waits for you to agree in the chat.
+store. The skills tell Hermes to show what will change and wait for your
+agreement in the chat before any change in DSers or your store, and Hermes
+asks for approval before it calls a DSers tool that is not read-only.
 
 Setup has two parts: install and enable this plugin, then configure and
 authorize the DSers OAuth connection as described in
@@ -69,6 +70,7 @@ the one that fits your request.
   [Sign up](https://accounts.dsers.com/accounts/register?utm_source=hermes_plugin&utm_medium=ai_assistant&utm_campaign=dsers_plugin&utm_content=readme)
 - A DSers Advanced, Pro, or Enterprise subscription is required to use the
   connected MCP service. The Basic plan does not include MCP access.
+- At least one Shopify or Wix store connected in DSers.
 - Hermes Agent; this package was validated on v0.22.5.
 - A configured model provider in Hermes to interpret requests and call tools.
 - Browser sign-in to authorize access to DSers.
