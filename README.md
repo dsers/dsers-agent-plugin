@@ -36,6 +36,7 @@ workflows in every plugin, written for each host's tool names and setup.
 | --- | --- | --- | --- |
 | Hermes Agent | [plugins/hermes](plugins/hermes/README.md) | `hermes plugins install dsers/dsers-agent-plugin/plugins/hermes --no-enable`, then the [OAuth setup](plugins/hermes/README.md#install-in-hermes) | Hermes v0.22.5; CLI and Desktop |
 | OpenClaw | [plugins/openclaw](plugins/openclaw/README.md) | `openclaw plugins install clawhub:@dsers/dsers`, then Connect in Settings → Plugins → DSers | OpenClaw 2026.10.9 or later |
+| Antigravity | [plugins/antigravity](plugins/antigravity/README.md) | `git clone https://github.com/dsers/dsers-agent-plugin`, then `agy plugin install dsers-agent-plugin/plugins/antigravity`, then Authenticate in Customizations → Installed | Antigravity CLI 1.4.6 or later |
 | Claude | [dsers/claude-dsers-plugin](https://github.com/dsers/claude-dsers-plugin) | Claude Code: `/plugin marketplace add dsers/claude-dsers-plugin`, then `/plugin install dsers-dropshipping-automation@claude-dsers-plugin` | Claude Code |
 
 Every plugin requires a DSers Advanced, Pro, or Enterprise subscription.
@@ -77,13 +78,20 @@ dsers-agent-plugin/
     │   ├── examples/
     │   ├── README.md
     │   └── LICENSE
-    └── openclaw/
-        ├── .claude-plugin/plugin.json
-        ├── .mcp.json
-        ├── openclaw.plugin.json
-        ├── package.json
+    ├── openclaw/
+    │   ├── .claude-plugin/plugin.json
+    │   ├── .mcp.json
+    │   ├── openclaw.plugin.json
+    │   ├── package.json
+    │   ├── skills/
+    │   ├── assets/icon.png
+    │   ├── README.md
+    │   └── LICENSE
+    └── antigravity/
+        ├── plugin.json
+        ├── mcp_config.json
         ├── skills/
-        ├── assets/icon.png
+        ├── assets/logo.png
         ├── README.md
         └── LICENSE
 ```
@@ -106,6 +114,7 @@ Markdown instructions; the packages run no bundled code.
 - [DSers dropshipping platform](https://www.dsers.com/)
 - [DSers plugin for Hermes and setup guide](plugins/hermes/README.md)
 - [DSers plugin for OpenClaw and setup guide](plugins/openclaw/README.md)
+- [DSers plugin for Antigravity and setup guide](plugins/antigravity/README.md)
 - [DSers service capabilities](https://www.dsers.com/en/mcp-server)
 
 ## License
