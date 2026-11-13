@@ -129,7 +129,7 @@ existing `mcp_servers` map; preserve other configuration:
 ```yaml
 mcp_servers:
   dsers:
-    url: https://ai.dsers.com/mcp
+    url: https://ai.dsers.com/mcp/hermes
     auth: oauth
     trust: untrusted
     strict_redirect_headers: true

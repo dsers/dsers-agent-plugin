@@ -2,10 +2,10 @@
 name: order-fulfillment
 description: "Moves a dropshipping seller's DSers orders from paid by the customer to placed and paid with the supplier: shows how many orders are waiting, explains why an order cannot be placed (shipping method, address, unmapped or out-of-stock items), fixes the address, shipping method, or supplier on an order, places orders with suppliers, creates payment links for orders awaiting payment, cancels eligible supplier orders, and refreshes supplier order details. Use when the user asks about new, stuck, failed, or unpaid orders, wants to place or pay for orders, asks why an order is not going through, or has an item that went out of stock after the customer paid. Not for tracking parcels after they ship (package-tracking) or changing a product's supplier for all future orders (supplier-mapping)."
 license: MIT
-compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection."
+compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp/hermes) and a DSers plan that includes MCP Connection."
 metadata:
   author: DSers
-  version: "0.1.2"
+  version: "0.1.3"
 ---
 
 # Order fulfillment

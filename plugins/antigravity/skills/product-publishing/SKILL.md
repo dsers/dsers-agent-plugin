@@ -2,10 +2,10 @@
 name: product-publishing
 description: "Publishes products from a dropshipping seller's DSers Import List to their connected stores: picks products and stores, checks each product is ready, sets up a Shopify shipping profile when the store has none, chooses shipping per product and store, sets whether products go live or stay as drafts, visibility in the online store, stock and price sync, and other publish settings, then publishes and reports the result for every product and store. Use when the user wants to publish, push, list, or upload products to Shopify or another store, or asks why a product did not publish. Not for editing products before publishing (listing-editing) or changing products already in the store (profit-and-pricing, supplier-mapping)."
 license: MIT
-compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection."
+compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp/antigravity) and a DSers plan that includes MCP Connection."
 metadata:
   author: DSers
-  version: "0.1.5"
+  version: "0.1.6"
 ---
 
 # Product publishing

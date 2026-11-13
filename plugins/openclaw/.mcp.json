@@ -2,7 +2,7 @@
   "mcpServers": {
     "dsers": {
       "type": "http",
-      "url": "https://ai.dsers.com/mcp",
+      "url": "https://ai.dsers.com/mcp/openclaw",
       "auth": "oauth"
     }
   }

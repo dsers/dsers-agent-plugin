@@ -8,7 +8,7 @@ The skills tell Antigravity to show what will change and wait for your agreement
 
 ## What's included
 
-- **DSers MCP**: a connection to `https://ai.dsers.com/mcp`. You sign in to DSers with OAuth.
+- **DSers MCP**: a connection to `https://ai.dsers.com/mcp/antigravity`. You sign in to DSers with OAuth.
 - **Skills**:
 
 | Skill | What it helps with |
@@ -88,7 +88,7 @@ DSers MCP works alongside the DSers dashboard. [DSers MCP documentation](https:/
 
 ## Data, network, and approvals
 
-- The plugin contains skills and a connection to `https://ai.dsers.com/mcp`. It has no code, scripts, hooks, or background processes.
+- The plugin contains skills and a connection to `https://ai.dsers.com/mcp/antigravity`. It has no code, scripts, hooks, or background processes.
 - When DSers is connected, Antigravity sends requests to DSers under the DSers account that signed in, and DSers processes that data under its [privacy policy](https://www.dsers.com/en/privacy).
 - DSers tools include write operations: placing supplier orders, which spends money through your DSers account; changing prices; and publishing listings. The skills ask for your agreement in the chat before each change, and Antigravity's own tool permission settings still apply.
 

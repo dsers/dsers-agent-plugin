@@ -3,7 +3,7 @@
   "name": "dsers",
   "displayName": "DSers",
   "description": "Connect your favorite AI client to DSers and move from product discovery to listings, store operations, orders, fulfillment, and delivery tracking — all in one conversation.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "logo": "assets/logo.png",
   "suggestedPrompts": [
     "Find suppliers for a magnetic phone stand and compare shipping to the US",

@@ -2,10 +2,10 @@
 name: profit-and-pricing
 description: "Checks whether a dropshipping seller is making money and sets prices in DSers: profit per order and per product from the seller's DSers orders after payment fees, ads, refunds, and other costs; where the money leaks; explaining, testing, and changing a store's pricing rule (cost ranges, multipliers, profit margins, shipping, price endings, exchange rate); applying the rule to every product in a store; changing one live product's price; and reacting when supplier costs rise. Use when the user asks if they are profitable, why sales do not reach the bank, which products lose money, what to charge, how their pricing rule works, or wants prices changed. Not for prices of products still in the Import List before publishing (listing-editing)."
 license: MIT
-compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection. Some rule types need a plan that includes them."
+compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp/antigravity) and a DSers plan that includes MCP Connection. Some rule types need a plan that includes them."
 metadata:
   author: DSers
-  version: "0.1.5"
+  version: "0.1.6"
 ---
 
 # Profit and pricing
