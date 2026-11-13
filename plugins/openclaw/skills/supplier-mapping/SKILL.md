@@ -2,10 +2,10 @@
 name: supplier-mapping
 description: "Links a dropshipping seller's store products to suppliers in DSers (Supplier Mapping) and keeps those links working: finds unmapped or broken products, brings existing store products into DSers, maps variants to a supplier, adds a backup supplier for stockouts, sets different suppliers by country or bundle quantities, runs AI Mapping, replaces a supplier whose price, stock, or SKUs changed, and updates live variants' stock. Use when the user asks which products have no supplier, wants to change or add a supplier for a product, sees Mapping Lost or unmapped items, gets supplier change notices, asks whether suppliers changed prices, stock, or products, or wants products already in their store managed by DSers. Not for finding new products to sell (product-sourcing), changing the supplier on one order only (order-fulfillment), or prices (profit-and-pricing)."
 license: MIT
-compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection. AI Mapping uses AI Credits."
+compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp/openclaw) and a DSers plan that includes MCP Connection. AI Mapping uses AI Credits."
 metadata:
   author: DSers
-  version: "0.1.5"
+  version: "0.1.6"
 ---
 
 # Supplier mapping

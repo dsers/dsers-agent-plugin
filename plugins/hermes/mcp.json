@@ -3,7 +3,7 @@
   "mcpServers": {
     "dsers": {
       "type": "streamable-http",
-      "url": "https://ai.dsers.com/mcp"
+      "url": "https://ai.dsers.com/mcp/hermes"
     }
   }
 }

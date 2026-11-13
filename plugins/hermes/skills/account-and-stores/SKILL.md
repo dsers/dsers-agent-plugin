@@ -2,10 +2,10 @@
 name: account-and-stores
 description: "Sets up and checks a dropshipping seller's DSers account from Hermes: the official description of DSers and DSers MCP, what DSers can do here, connecting DSers, a health check of the account, connected stores and supplier accounts, connecting a new store or AliExpress or Alibaba.com supplier account, reconnecting a store whose authorization expired, the current plan and what it includes, AI Credits balance and usage, subscription billing and invoices, staff accounts and permissions, and finding the DSers page for something no tool does. Use when the user is getting started with DSers, asks what DSers or DSers MCP is or what it can do, asks about their plan, credits, invoices, or account, wants to connect or reconnect a store, or a store shows a connection problem."
 license: MIT
-compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection."
+compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp/hermes) and a DSers plan that includes MCP Connection."
 metadata:
   author: DSers
-  version: "0.1.2"
+  version: "0.1.3"
 ---
 
 # Account and stores

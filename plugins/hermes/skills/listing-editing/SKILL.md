@@ -2,10 +2,10 @@
 name: listing-editing
 description: "Turns supplier products in a dropshipping seller's DSers Import List into store-ready listings before they are published: rewrites keyword-stuffed titles and supplier descriptions, renames and removes variants and options, fixes images, SKUs, stock, and package weight, sets prices or one price for all variants, sets collections, product type, tags, vendor, category, and URL handle for a store, and deletes products from the Import List; one product or a batch. Use when the user wants to clean up, rewrite, translate, or edit imported products, set prices before publishing, or tidy the Import List. Not for products already published to a store, whose text is edited in the store admin (prices: profit-and-pricing), or for publishing (product-publishing)."
 license: MIT
-compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection."
+compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp/hermes) and a DSers plan that includes MCP Connection."
 metadata:
   author: DSers
-  version: "0.1.2"
+  version: "0.1.3"
 ---
 
 # Listing editing

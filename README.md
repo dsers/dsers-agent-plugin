@@ -103,8 +103,11 @@ Install each plugin from its own subdirectory. The repository root is an
 index, not an installable plugin.
 
 The packages connect to the existing DSers MCP service at
-`https://ai.dsers.com/mcp` using OAuth 2.1. This repository does not include
-the MCP server implementation or user credentials.
+`https://ai.dsers.com/mcp` using OAuth 2.1. Each package uses its own entry
+under that address, such as `https://ai.dsers.com/mcp/hermes`, so DSers can
+tell which app a connection comes from. Every entry is the same service with
+the same tools. This repository does not include the MCP server implementation
+or user credentials.
 
 MCP provides the service connection. The skills carry DSers workflows as
 Markdown instructions; the packages run no bundled code.

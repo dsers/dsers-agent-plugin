@@ -2,10 +2,10 @@
 name: package-tracking
 description: "Tracks a dropshipping seller's DSers parcels after the supplier ships and deals with delivery problems: where a package is, which parcels are stuck, late, failed, or returned, refreshing stale tracking, sending tracking numbers to the store, replacing wrong tracking numbers, notifying Shopify buyers, and handling late or lost parcels, wrong or damaged items, PayPal 'item not received' disputes, and card chargebacks, with messages to customers. Use when the user asks where an order or package is, why tracking has not moved, which shipments have problems, why an order is not marked fulfilled in the store, or how to answer a customer or dispute about delivery. Not for orders the supplier has not shipped yet (order-fulfillment)."
 license: MIT
-compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection."
+compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp/antigravity) and a DSers plan that includes MCP Connection."
 metadata:
   author: DSers
-  version: "0.1.5"
+  version: "0.1.6"
 ---
 
 # Package tracking

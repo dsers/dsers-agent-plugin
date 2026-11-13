@@ -2,10 +2,10 @@
 name: product-sourcing
 description: "Finds products and suppliers for a dropshipping seller with live DSers supplier data across the supplier platforms connected to DSers, such as AliExpress, 1688, Alibaba.com, and the DSers Verified Agent Network: product ideas from curated collections, search by keyword or image link with filters like ship-from country, delivery time, and price, supplier comparison on cost, stock, shipping cost and time to the seller's market, ratings, and landed cost and margin, then adding the chosen products to the DSers Import List. Use when the user asks what to sell, wants a supplier for a product or an image, wants to compare suppliers or shipping options, or wants products imported into DSers. Not for replacing the supplier of a product already in the store (supplier-mapping) or editing imported products (listing-editing)."
 license: MIT
-compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp) and a DSers plan that includes MCP Connection."
+compatibility: "Requires the DSers MCP server (https://ai.dsers.com/mcp/antigravity) and a DSers plan that includes MCP Connection."
 metadata:
   author: DSers
-  version: "0.1.5"
+  version: "0.1.6"
 ---
 
 # Product sourcing
